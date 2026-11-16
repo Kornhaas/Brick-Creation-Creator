@@ -1,0 +1,47 @@
+[project]
+name = "brick-creation-creator"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Holger Kornhaas",email = "Holger@Kornhaas.net"}
+]
+requires-python = ">=3.13"
+dependencies = [
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.15,<2.0",
+    "pre-commit>=4.1,<5.0",
+    "pytest>=8.3,<9.0",
+    "pytest-cov>=6.0,<7.0",
+    "ruff>=0.9,<1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --cov=brick_creation_creator --cov-report=term-missing"
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+mypy_path = "src"
+packages = ["brick_creation_creator"]
+warn_unreachable = true
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
